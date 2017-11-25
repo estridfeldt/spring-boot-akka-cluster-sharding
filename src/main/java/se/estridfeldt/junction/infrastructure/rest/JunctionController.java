@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import se.estridfeldt.junction.application.TargetDecider;
 
+import java.util.concurrent.CompletableFuture;
+
 @RestController
 @RequestMapping("/junctions")
 public class JunctionController {
@@ -18,7 +20,7 @@ public class JunctionController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{junctionId}/decisionForContainer/{containerId}")
-    public ResponseEntity decisionForContainer(@PathVariable("junctionId") Integer junctionId, @PathVariable("containerId") Integer containerId) {
-        return ResponseEntity.ok(targetDecider.decide(junctionId, containerId));
+    public CompletableFuture<ResponseEntity> decisionForContainer(@PathVariable("junctionId") Integer junctionId, @PathVariable("containerId") Integer containerId) {
+        return targetDecider.decide(junctionId, containerId).thenApply(ResponseEntity::ok);
     }
 }
