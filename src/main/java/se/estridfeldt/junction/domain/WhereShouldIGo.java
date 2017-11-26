@@ -1,6 +1,8 @@
 package se.estridfeldt.junction.domain;
 
-public class WhereShouldIGo {
+import java.io.Serializable;
+
+public class WhereShouldIGo implements Serializable {
     private final Integer junctionId;
     private final Integer containerId;
 
@@ -9,7 +11,7 @@ public class WhereShouldIGo {
         this.containerId = containerId;
     }
 
-    Integer junction() {
+    public Integer junction() {
         return junctionId;
     }
 

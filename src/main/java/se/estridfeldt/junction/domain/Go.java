@@ -1,6 +1,8 @@
 package se.estridfeldt.junction.domain;
 
-public class Go {
+import java.io.Serializable;
+
+public class Go implements Serializable {
     private final String targetConveyor;
 
     public Go(String targetConveyor) {

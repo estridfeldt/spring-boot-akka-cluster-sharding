@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class SortingDecider extends AbstractActor {
 
+    public static final String NAME = "sortingDecider";
     private final LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
     @Override

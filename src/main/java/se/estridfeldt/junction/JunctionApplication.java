@@ -1,6 +1,6 @@
 package se.estridfeldt.junction;
 
-import akka.actor.ActorSystem;
+import akka.actor.ExtendedActorSystem;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +14,7 @@ public class JunctionApplication {
     }
 
     @Bean
-    public TargetDecider targetDecider(ActorSystem system) {
+    public TargetDecider targetDecider(ExtendedActorSystem system) {
         return new TargetDecider(system);
     }
 }
